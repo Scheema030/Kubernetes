@@ -1,0 +1,32 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql-container
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=testdb
+    volumes:
+      - /Users/scheema/Documents/Healee/mysql-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    user: mysql
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb-container
+    volumes:
+      - /Users/scheema/Documents/Healee/mongodb-data:/data/db
+    ports:
+      - "27017:27017"
+    user: mongodb
+
+  web:
+    build: .
+    container_name: web-container
+    depends_on:
+      - mysql
+      - mongodb
+    ports:
+      - "3000:3000"
+    user: 1000:1000
