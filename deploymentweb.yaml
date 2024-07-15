@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: web-app
-        image: mywebbapp-web:latest
+        image: scheema030/mywebbapp-web:latest
         ports:
         - containerPort: 3000
         resources:
@@ -24,3 +24,5 @@ spec:
           limits:
             memory: "128Mi"
             cpu: "500m"
+      imagePullSecrets:
+      - name: my-webapp-secret
