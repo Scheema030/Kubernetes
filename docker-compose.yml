@@ -7,7 +7,7 @@ services:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=testdb
     volumes:
-      - /Users/scheema/Documents/Healee/mysql-data:/var/lib/mysql
+      - ${PWD}/docker-data/mysql-data:/var/lib/mysql
     ports:
       - "3306:3306"
     user: mysql
@@ -16,7 +16,7 @@ services:
     image: mongo:latest
     container_name: mongodb-container
     volumes:
-      - /Users/scheema/Documents/Healee/mongodb-data:/data/db
+      - ${PWD}/docker-data/mongodb-data:/data/db
     ports:
       - "27017:27017"
     user: mongodb
